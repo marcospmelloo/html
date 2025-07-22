@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para Milena!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      font-family: 'Georgia', serif;
+      color: #f0c2d6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-y: auto;
+      position: relative;
+      flex-direction: column;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px;
+      background-color: rgba(25, 25, 40, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.6);
+      max-width: 700px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff66a3;
+      text-shadow: 0 0 10px #ff66a3;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #f0c2d6;
+    }
+
+    .timer {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #ff3399;
+      margin-bottom: 30px;
+      text-shadow: 0 0 8px #ff3399;
+    }
+
+    .slideshow {
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+  margin: 0 auto 25px auto;
+  position: relative;
+  background-color: #2a2a44;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideshow img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  border-radius: 15px;
+  background-color: #2a2a44;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slideshow img.active {
+  opacity: 1;
+}
+
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff66a3;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+      opacity: 0.6;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff66a3;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+      }
+    }
+
+    /* Player Spotify */
+    .spotify-player {
+      margin: 20px auto;
+      width: 300px;
+      box-shadow: 0 0 20px #1db954aa;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="heart" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="heart" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="heart" style="left: 70%; animation-delay: 1s;"></div>
+    <div class="heart" style="left: 90%; animation-delay: 3s;"></div>
+  </div>
+
+  <div class="container">
+    <h1>Feliz 3 meses, meu amor!</h1>
+    <p>
+      Hoje completamos 3 meses juntos,<br>
+      e eu só tenho a agradecer por cada momento ao seu lado.<br>
+      Você é linda, incrível, carinhosa e faz meus dias muito mais felizes.<br>
+      Seus olhos me dizem o que nenhuma carta de amor ou música romântica<br>
+      poderiam dizer, eles retratam a beleza e o amor puro e verdadeiro que residem em você!<br>
+      Que venham muitos meses e momentos lindos pela frente ao seu lado.<br>
+      Eu te amo!<br><br>
+      Estamos juntos há:
+    </p>
+    <div class="timer" id="timer"></div>
+
+    <div class="slideshow" id="slideshow">
+      <img src="foto1.jpg" class="active" alt="Foto 1" />
+      <img src="foto2.jpg" alt="Foto 2" />
+      <img src="foto3.jpg" alt="Foto 3" />
+      <img src="foto4.jpg" alt="Foto 4" />
+      <img src="foto5.jpg" alt="Foto 5" />
+      <img src="foto6.jpg" alt="Foto 6" />
+      <img src="foto7.jpg" alt="Foto 7" />
+      <img src="foto8.jpg" alt="Foto 8" />
+      <!-- Pode adicionar mais imagens aqui -->
+    </div>
+    <h1>Nossa música:</h1>
+    <div class="spotify-player">
+      <iframe
+        src="https://open.spotify.com/embed/track/5cbmMnGyg9FTxLhO2G5RXo?si=WYGsVTvlSZ65pVdoGLIVsw"
+        width="300"
+        height="80"
+        frameborder="0"
+        allowtransparency="true"
+        allow="encrypted-media"
+        style="border-radius:12px"
+      ></iframe>
+    </div>
+  </div>
+
+  <script>
+    const startDate = new Date("2025-04-23T00:00:00");
+
+    function updateTimer() {
+      const now = new Date();
+
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let dayDiff = now.getDate() - startDate.getDate();
+
+      if (dayDiff < 0) {
+        months -= 1;
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        dayDiff = prevMonth.getDate() + dayDiff;
+      }
+
+      let totalMonths = years * 12 + months;
+
+      const currentMonthStart = new Date(startDate);
+      currentMonthStart.setMonth(startDate.getMonth() + totalMonths);
+      const timeDiff = now - currentMonthStart;
+
+      const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
+      const seconds = Math.floor((timeDiff / 1000) % 60);
+
+      document.getElementById("timer").innerText =
+        `${totalMonths} meses, ${dayDiff} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos 🤍`;
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // Slideshow automático
+    const slides = document.querySelectorAll("#slideshow img");
+    let currentSlide = 0;
+
+    function showNextSlide() {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }
+
+    setInterval(showNextSlide, 3000);
+  </script>
+</body>
+</html>
