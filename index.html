@@ -143,6 +143,52 @@
       border-radius: 12px;
       overflow: hidden;
     }
+    /* Reset body flex para celular para evitar problemas de scroll */
+@media (max-width: 600px) {
+  body {
+    display: block;
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .timer {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .slideshow {
+    width: 90vw;
+    height: 90vw;
+    max-width: 350px;
+    max-height: 350px;
+    margin: 0 auto 20px auto;
+  }
+
+  .spotify-player {
+    width: 90vw;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
 
   </style>
 </head>
